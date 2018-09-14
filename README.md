@@ -33,3 +33,4 @@ Click OK to run the program, and the next time you double-click on a runnable JA
 On Mac, the situation is easier. All you have to do is double-click the JAR file.
 
 ### Windows
+Instructions coming soon!
