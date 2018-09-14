@@ -2,6 +2,9 @@
 Connect your Raspberry Pis with the Inter-Pi Connection Thingamajigger today!
 
 This is a simple system, designed for Raspberry Pis, that lets you connect a chat server and clients over a network.
+Since the IPCT is written in Java, it can be run on any system with a JRE version 8 (1.8) or above. That is,
+
+**The IPCT requires Java 8 or later.**
 
 ## How to use
 First, find your computer's local (private) IP address. This can be tricky, but on [Raspbian](https://en.wikipedia.org/wiki/Raspbian) just run this command:
@@ -19,6 +22,13 @@ Next, you will want to connect. Run the client:
 ```
 java -jar path/to/the/file/IPCTClient.jar
 ```
-Type in your name and the server computer's IP address, wait for others to do the same, and have fun ~~yakking your head off~~ chatting!
+Type in your name and the server computer's IP address, wait for others to do the same, and have fun chatting!
 
 On Raspbian, if you want this to be double-clickable, open the file manager and right-click either the client or server JAR. Click Open With... and Custom Command Line. In the first text box, type `java -jar %f`. In the second text box, type a name for this command (I used `Java (Run Jar)`). Finally, make sure the `Set selected application as default action for this file type` box is checked. This will tell the system to run the file when it is double-clicked.
+![Example Image](TheIPCT/doubleclickableing.png)
+Click OK to run the program, and the next time you double-click on a runnable JAR file, it will be run. NOTE: The system will also try to run non-executable JARs, too, so make sure to open those differently.
+
+### macOS
+On Mac, the situation is easier. All you have to do is double-click the JAR file.
+
+### Windows
