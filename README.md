@@ -1,4 +1,4 @@
-# The IPCT
+# The Inter-Pi Connection Thingamajigger
 Connect your Raspberry Pis with the Inter-Pi Connection Thingamajigger today!
 
 This is a simple system that lets you run a chat server and clients over a network (or the Internet).
