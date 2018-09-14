@@ -25,6 +25,8 @@ java -jar path/to/the/file/IPCTClient.jar
 ```
 Type in your name and the server computer's IP address, wait for others to do the same, and have fun chatting!
 
+If you are having problems connecting, make sure you are on the exact same network, and then recheck the server's IP.
+
 On Raspbian, if you want this to be double-clickable, open the file manager and right-click either the client or server JAR. Click Open With... and Custom Command Line. In the first text box, type `java -jar %f`. In the second text box, type a name for this command (I used `Java (Run Jar)`). Finally, make sure the `Set selected application as default action for this file type` box is checked. This will tell the system to run the file when it is double-clicked.
 
 ![Example Image](/doubleclickableing.png)
