@@ -5,6 +5,7 @@ This is a simple system, designed for Raspberry Pis, that lets you connect a cha
 Since the IPCT is written in Java, it can be run on any system with a JRE version 8 (1.8) or above. That is,
 
 **The IPCT requires Java 8 or later.**
+On Raspbian, you can run `sudo apt install oracle-java8-jdk` as the `pi` user to install Java 8, but if that doesn't work, PLEASE let me know.
 
 ## How to use
 First, find your computer's local (private) IP address. This can be tricky, but on [Raspbian](https://en.wikipedia.org/wiki/Raspbian) just run this command:
@@ -13,7 +14,7 @@ hostname -I
 ```
 If you are using something besides Raspbian, have a look at [this article](https://www.howtogeek.com/236838/how-to-find-any-devices-ip-address-mac-address-and-other-network-connection-details/) and just ignore the parts on MAC addresses.
 
-### Raspberry Pi / Other Linux/Unix
+### Raspberry Pi (Raspbian)
 Now run the IPCT Server with:
 ```
 java -jar path/to/the/file/IPCTServer.jar
