@@ -17,11 +17,11 @@ If you are using something besides Raspbian, have a look at [this article](https
 ### Raspberry Pi (Raspbian)
 Now run the IPCT Server with:
 ```
-java -jar path/to/the/file/IPCTServer.jar
+java -jar path/to/the/file/IPCTServer8_v1.1.jar
 ```
 Next, you will want to connect. Run the client:
 ```
-java -jar path/to/the/file/IPCTClient.jar
+java -jar path/to/the/file/IPCTClient8_v1.1.jar
 ```
 Type in your name and the server computer's IP address, wait for others to do the same, and have fun chatting!
 
