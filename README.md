@@ -38,3 +38,7 @@ On Mac, the situation is easier. All you have to do is double-click the JAR file
 
 ### Windows
 Instructions coming soon!
+
+
+##### Fine Print, aka LMJ (Legal Mumbo Jumbo)
+Raspberry Pi is a trademark of the Raspberry Pi Foundation.
