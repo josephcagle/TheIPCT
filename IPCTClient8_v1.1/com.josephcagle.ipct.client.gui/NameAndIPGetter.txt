@@ -1,0 +1,24 @@
+package com.josephcagle.ipct.client.gui;
+
+public class NameAndIPGetter {
+
+    public NameAndIPGetter() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: invokespecial java/lang/Object."<init>":()V
+         * 4: return
+         *  */
+        // </editor-fold>
+    }
+
+    public String[] get() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: new           com/josephcagle/ipct/client/gui/GetInfoFrame
+         * 3: dup
+         * 4: invokespecial com/josephcagle/ipct/client/gui/GetInfoFrame."<init>":()V
+         * 7: invokevirtual com/josephcagle/ipct/client/gui/GetInfoFrame.getNameAndIP:()[Ljava/lang/String;
+         * 10: areturn
+         *  */
+        // </editor-fold>
+    }
+}

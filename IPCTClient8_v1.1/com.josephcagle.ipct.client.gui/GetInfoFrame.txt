@@ -1,0 +1,104 @@
+package com.josephcagle.ipct.client.gui;
+
+import java.awt.Image;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+class GetInfoFrame extends JFrame {
+
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPanel;
+    private JTextField nameField;
+    private JTextField ipField;
+    private volatile boolean doneLoading;
+    private final Image icon;
+
+    GetInfoFrame() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: invokespecial javax/swing/JFrame."<init>":()V
+         * 4: aload_0
+         * 5: iconst_0
+         * 6: putfield      com/josephcagle/ipct/client/gui/GetInfoFrame.doneLoading:Z
+         * 9: aload_0
+         * 10: new           javax/swing/ImageIcon
+         * 13: dup
+         * 14: aload_0
+         * 15: invokevirtual java/lang/Object.getClass:()Ljava/lang/Class;
+         * 18: ldc           IPCT_logo.png
+         * 20: invokevirtual java/lang/Class.getResource:(Ljava/lang/String;)Ljava/net/URL;
+         * 23: invokespecial javax/swing/ImageIcon."<init>":(Ljava/net/URL;)V
+         * 26: invokevirtual javax/swing/ImageIcon.getImage:()Ljava/awt/Image;
+         * 29: putfield      com/josephcagle/ipct/client/gui/GetInfoFrame.icon:Ljava/awt/Image;
+         * 32: new           com/josephcagle/ipct/client/gui/GetInfoFrame$1
+         * 35: dup
+         * 36: aload_0
+         * 37: invokespecial com/josephcagle/ipct/client/gui/GetInfoFrame$1."<init>":(Lcom/josephcagle/ipct/client/gui/GetInfoFrame;)V
+         * 40: invokestatic  java/awt/EventQueue.invokeLater:(Ljava/lang/Runnable;)V
+         * 43: return
+         *  */
+        // </editor-fold>
+    }
+
+    String[] getNameAndIP() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: getfield      com/josephcagle/ipct/client/gui/GetInfoFrame.doneLoading:Z
+         * 4: ifne          20
+         * 7: ldc2_w        80l
+         * 10: invokestatic  java/lang/Thread.sleep:(J)V
+         * 13: goto          0
+         * 16: astore_1
+         * 17: goto          0
+         * 20: aload_0
+         * 21: iconst_1
+         * 22: invokevirtual com/josephcagle/ipct/client/gui/GetInfoFrame.setVisible:(Z)V
+         * 25: aload_0
+         * 26: dup
+         * 27: astore_1
+         * 28: monitorenter
+         * 29: aload_0
+         * 30: invokevirtual java/lang/Object.wait:()V
+         * 33: aload_1
+         * 34: monitorexit
+         * 35: goto          43
+         * 38: astore_2
+         * 39: aload_1
+         * 40: monitorexit
+         * 41: aload_2
+         * 42: athrow
+         * 43: goto          51
+         * 46: astore_1
+         * 47: aload_1
+         * 48: invokevirtual java/lang/InterruptedException.printStackTrace:()V
+         * 51: aload_0
+         * 52: iconst_0
+         * 53: invokevirtual com/josephcagle/ipct/client/gui/GetInfoFrame.setVisible:(Z)V
+         * 56: iconst_2
+         * 57: anewarray     java/lang/String
+         * 60: dup
+         * 61: iconst_0
+         * 62: aload_0
+         * 63: getfield      com/josephcagle/ipct/client/gui/GetInfoFrame.nameField:Ljavax/swing/JTextField;
+         * 66: invokevirtual javax/swing/JTextField.getText:()Ljava/lang/String;
+         * 69: invokevirtual java/lang/String.trim:()Ljava/lang/String;
+         * 72: aastore
+         * 73: dup
+         * 74: iconst_1
+         * 75: aload_0
+         * 76: getfield      com/josephcagle/ipct/client/gui/GetInfoFrame.ipField:Ljavax/swing/JTextField;
+         * 79: invokevirtual javax/swing/JTextField.getText:()Ljava/lang/String;
+         * 82: invokevirtual java/lang/String.trim:()Ljava/lang/String;
+         * 85: aastore
+         * 86: areturn
+         * Exception table:
+         * from    to  target type
+         * 7    13    16   Class java/lang/InterruptedException
+         * 29    35    38   any
+         * 38    41    38   any
+         * 25    43    46   Class java/lang/InterruptedException
+         *  */
+        // </editor-fold>
+    }
+}
