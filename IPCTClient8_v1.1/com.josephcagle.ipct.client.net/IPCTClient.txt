@@ -1,0 +1,398 @@
+package com.josephcagle.ipct.client.net;
+
+import com.josephcagle.ipct.client.gui.ChatFrame;
+
+public class IPCTClient {
+
+    private String username;
+    private String serverIPAddress;
+    private ChatFrame chatFrame;
+    private volatile boolean running;
+
+    public static void main(String[] strings) {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: new           com/josephcagle/ipct/client/net/IPCTClient
+         * 3: dup
+         * 4: invokespecial com/josephcagle/ipct/client/net/IPCTClient."<init>":()V
+         * 7: pop
+         * 8: return
+         *  */
+        // </editor-fold>
+    }
+
+    public IPCTClient() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: invokespecial java/lang/Object."<init>":()V
+         * 4: aload_0
+         * 5: ldc           NONE
+         * 7: putfield      com/josephcagle/ipct/client/net/IPCTClient.username:Ljava/lang/String;
+         * 10: aload_0
+         * 11: aconst_null
+         * 12: putfield      com/josephcagle/ipct/client/net/IPCTClient.serverIPAddress:Ljava/lang/String;
+         * 15: aload_0
+         * 16: iconst_1
+         * 17: putfield      com/josephcagle/ipct/client/net/IPCTClient.running:Z
+         * 20: new           com/josephcagle/ipct/client/gui/NameAndIPGetter
+         * 23: dup
+         * 24: invokespecial com/josephcagle/ipct/client/gui/NameAndIPGetter."<init>":()V
+         * 27: invokevirtual com/josephcagle/ipct/client/gui/NameAndIPGetter.get:()[Ljava/lang/String;
+         * 30: astore_1
+         * 31: aload_1
+         * 32: iconst_0
+         * 33: aaload
+         * 34: ldc           IPCT_CLIENT
+         * 36: invokevirtual java/lang/String.equals:(Ljava/lang/Object;)Z
+         * 39: ifeq          47
+         * 42: aload_1
+         * 43: iconst_0
+         * 44: ldc           nobodyinparticular
+         * 46: aastore
+         * 47: aload_0
+         * 48: aload_1
+         * 49: iconst_0
+         * 50: aaload
+         * 51: putfield      com/josephcagle/ipct/client/net/IPCTClient.username:Ljava/lang/String;
+         * 54: aload_0
+         * 55: aload_1
+         * 56: iconst_1
+         * 57: aaload
+         * 58: putfield      com/josephcagle/ipct/client/net/IPCTClient.serverIPAddress:Ljava/lang/String;
+         * 61: aload_0
+         * 62: new           com/josephcagle/ipct/client/gui/ChatFrame
+         * 65: dup
+         * 66: invokespecial com/josephcagle/ipct/client/gui/ChatFrame."<init>":()V
+         * 69: putfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 72: aload_0
+         * 73: getfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 76: aload_0
+         * 77: getfield      com/josephcagle/ipct/client/net/IPCTClient.username:Ljava/lang/String;
+         * 80: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setUsername:(Ljava/lang/String;)V
+         * 83: aload_0
+         * 84: getfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 87: iconst_1
+         * 88: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setVisible:(Z)V
+         * 91: new           java/net/Socket
+         * 94: dup
+         * 95: aload_0
+         * 96: getfield      com/josephcagle/ipct/client/net/IPCTClient.serverIPAddress:Ljava/lang/String;
+         * 99: sipush        23435
+         * 102: invokespecial java/net/Socket."<init>":(Ljava/lang/String;I)V
+         * 105: astore_2
+         * 106: aconst_null
+         * 107: astore_3
+         * 108: new           java/io/PrintStream
+         * 111: dup
+         * 112: aload_2
+         * 113: invokevirtual java/net/Socket.getOutputStream:()Ljava/io/OutputStream;
+         * 116: invokespecial java/io/PrintStream."<init>":(Ljava/io/OutputStream;)V
+         * 119: astore        4
+         * 121: aconst_null
+         * 122: astore        5
+         * 124: new           java/io/BufferedReader
+         * 127: dup
+         * 128: new           java/io/InputStreamReader
+         * 131: dup
+         * 132: aload_2
+         * 133: invokevirtual java/net/Socket.getInputStream:()Ljava/io/InputStream;
+         * 136: invokespecial java/io/InputStreamReader."<init>":(Ljava/io/InputStream;)V
+         * 139: invokespecial java/io/BufferedReader."<init>":(Ljava/io/Reader;)V
+         * 142: astore        6
+         * 144: aconst_null
+         * 145: astore        7
+         * 147: ldc           NO_INPUT
+         * 149: astore        8
+         * 151: aload         4
+         * 153: ldc           IPCT_CLIENT:CONNECTION_REQUEST
+         * 155: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 158: aload         4
+         * 160: new           java/lang/StringBuilder
+         * 163: dup
+         * 164: invokespecial java/lang/StringBuilder."<init>":()V
+         * 167: ldc           IPCT_CLIENT:USERNAME/
+         * 169: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 172: aload_0
+         * 173: getfield      com/josephcagle/ipct/client/net/IPCTClient.username:Ljava/lang/String;
+         * 176: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 179: invokevirtual java/lang/StringBuilder.toString:()Ljava/lang/String;
+         * 182: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 185: aload         6
+         * 187: invokevirtual java/io/BufferedReader.readLine:()Ljava/lang/String;
+         * 190: astore        8
+         * 192: aload         8
+         * 194: ldc           IPCT_SERVER:CONNECTION_ACCEPTED
+         * 196: invokevirtual java/lang/String.equals:(Ljava/lang/Object;)Z
+         * 199: ifne          212
+         * 202: aload         4
+         * 204: ldc           IPCT_SERVER:ILLEGAL_INPUT
+         * 206: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 209: goto          444
+         * 212: aload         6
+         * 214: invokevirtual java/io/BufferedReader.readLine:()Ljava/lang/String;
+         * 217: astore        8
+         * 219: aload         8
+         * 221: ldc           IPCT_SERVER:SENDING_CURRENT_CONVERSATION
+         * 223: invokevirtual java/lang/String.equals:(Ljava/lang/Object;)Z
+         * 226: ifne          239
+         * 229: aload         4
+         * 231: ldc           IPCT_SERVER:ILLEGAL_INPUT
+         * 233: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 236: goto          444
+         * 239: aload         6
+         * 241: invokevirtual java/io/BufferedReader.readLine:()Ljava/lang/String;
+         * 244: dup
+         * 245: astore        8
+         * 247: ldc           IPCT_SERVER:END_OF_CONVERSATION
+         * 249: invokevirtual java/lang/String.equals:(Ljava/lang/Object;)Z
+         * 252: ifne          267
+         * 255: aload_0
+         * 256: getfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 259: aload         8
+         * 261: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.displayMessage:(Ljava/lang/String;)V
+         * 264: goto          239
+         * 267: aload_0
+         * 268: getfield      com/josephcagle/ipct/client/net/IPCTClient.running:Z
+         * 271: ifeq          444
+         * 274: ldc2_w        80l
+         * 277: invokestatic  java/lang/Thread.sleep:(J)V
+         * 280: goto          290
+         * 283: astore        9
+         * 285: aload         9
+         * 287: invokevirtual java/lang/Exception.printStackTrace:()V
+         * 290: aload_0
+         * 291: getfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 294: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.isClosed:()Z
+         * 297: ifeq          308
+         * 300: aload_0
+         * 301: iconst_0
+         * 302: putfield      com/josephcagle/ipct/client/net/IPCTClient.running:Z
+         * 305: goto          444
+         * 308: ldc           NO_INPUT
+         * 310: astore        8
+         * 312: aload         6
+         * 314: invokevirtual java/io/BufferedReader.ready:()Z
+         * 317: ifeq          327
+         * 320: aload         6
+         * 322: invokevirtual java/io/BufferedReader.readLine:()Ljava/lang/String;
+         * 325: astore        8
+         * 327: aload         8
+         * 329: ldc           NO_INPUT
+         * 331: invokevirtual java/lang/String.equals:(Ljava/lang/Object;)Z
+         * 334: ifeq          340
+         * 337: goto          397
+         * 340: aload         8
+         * 342: ldc           IPCT_SERVER:MSG/
+         * 344: invokevirtual java/lang/String.startsWith:(Ljava/lang/String;)Z
+         * 347: ifeq          374
+         * 350: aload         8
+         * 352: ldc           /
+         * 354: iconst_2
+         * 355: invokevirtual java/lang/String.split:(Ljava/lang/String;I)[Ljava/lang/String;
+         * 358: iconst_1
+         * 359: aaload
+         * 360: astore        9
+         * 362: aload_0
+         * 363: getfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 366: aload         9
+         * 368: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.displayMessage:(Ljava/lang/String;)V
+         * 371: goto          397
+         * 374: aload         8
+         * 376: ldc           IPCT_SERVER:CONNECTION_CLOSED
+         * 378: invokevirtual java/lang/String.equals:(Ljava/lang/Object;)Z
+         * 381: ifeq          387
+         * 384: goto          444
+         * 387: aload         4
+         * 389: ldc           IPCT_SERVER:ILLEGAL_INPUT
+         * 391: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 394: goto          444
+         * 397: aload_0
+         * 398: getfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 401: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.hasNextOutgoingMsg:()Z
+         * 404: ifeq          267
+         * 407: aload_0
+         * 408: getfield      com/josephcagle/ipct/client/net/IPCTClient.chatFrame:Lcom/josephcagle/ipct/client/gui/ChatFrame;
+         * 411: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.getNextOutgoingMsg:()Ljava/lang/String;
+         * 414: astore        9
+         * 416: aload         4
+         * 418: new           java/lang/StringBuilder
+         * 421: dup
+         * 422: invokespecial java/lang/StringBuilder."<init>":()V
+         * 425: ldc           IPCT_CLIENT:MSG/
+         * 427: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 430: aload         9
+         * 432: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 435: invokevirtual java/lang/StringBuilder.toString:()Ljava/lang/String;
+         * 438: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 441: goto          397
+         * 444: aload         4
+         * 446: ldc           IPCT_CLIENT:LEAVING
+         * 448: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 451: iconst_0
+         * 452: invokestatic  java/lang/System.exit:(I)V
+         * 455: aload         6
+         * 457: ifnull        542
+         * 460: aload         7
+         * 462: ifnull        485
+         * 465: aload         6
+         * 467: invokevirtual java/io/BufferedReader.close:()V
+         * 470: goto          542
+         * 473: astore        8
+         * 475: aload         7
+         * 477: aload         8
+         * 479: invokevirtual java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+         * 482: goto          542
+         * 485: aload         6
+         * 487: invokevirtual java/io/BufferedReader.close:()V
+         * 490: goto          542
+         * 493: astore        8
+         * 495: aload         8
+         * 497: astore        7
+         * 499: aload         8
+         * 501: athrow
+         * 502: astore        10
+         * 504: aload         6
+         * 506: ifnull        539
+         * 509: aload         7
+         * 511: ifnull        534
+         * 514: aload         6
+         * 516: invokevirtual java/io/BufferedReader.close:()V
+         * 519: goto          539
+         * 522: astore        11
+         * 524: aload         7
+         * 526: aload         11
+         * 528: invokevirtual java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+         * 531: goto          539
+         * 534: aload         6
+         * 536: invokevirtual java/io/BufferedReader.close:()V
+         * 539: aload         10
+         * 541: athrow
+         * 542: aload         4
+         * 544: ifnull        629
+         * 547: aload         5
+         * 549: ifnull        572
+         * 552: aload         4
+         * 554: invokevirtual java/io/PrintStream.close:()V
+         * 557: goto          629
+         * 560: astore        6
+         * 562: aload         5
+         * 564: aload         6
+         * 566: invokevirtual java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+         * 569: goto          629
+         * 572: aload         4
+         * 574: invokevirtual java/io/PrintStream.close:()V
+         * 577: goto          629
+         * 580: astore        6
+         * 582: aload         6
+         * 584: astore        5
+         * 586: aload         6
+         * 588: athrow
+         * 589: astore        12
+         * 591: aload         4
+         * 593: ifnull        626
+         * 596: aload         5
+         * 598: ifnull        621
+         * 601: aload         4
+         * 603: invokevirtual java/io/PrintStream.close:()V
+         * 606: goto          626
+         * 609: astore        13
+         * 611: aload         5
+         * 613: aload         13
+         * 615: invokevirtual java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+         * 618: goto          626
+         * 621: aload         4
+         * 623: invokevirtual java/io/PrintStream.close:()V
+         * 626: aload         12
+         * 628: athrow
+         * 629: aload_2
+         * 630: ifnull        705
+         * 633: aload_3
+         * 634: ifnull        655
+         * 637: aload_2
+         * 638: invokevirtual java/net/Socket.close:()V
+         * 641: goto          705
+         * 644: astore        4
+         * 646: aload_3
+         * 647: aload         4
+         * 649: invokevirtual java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+         * 652: goto          705
+         * 655: aload_2
+         * 656: invokevirtual java/net/Socket.close:()V
+         * 659: goto          705
+         * 662: astore        4
+         * 664: aload         4
+         * 666: astore_3
+         * 667: aload         4
+         * 669: athrow
+         * 670: astore        14
+         * 672: aload_2
+         * 673: ifnull        702
+         * 676: aload_3
+         * 677: ifnull        698
+         * 680: aload_2
+         * 681: invokevirtual java/net/Socket.close:()V
+         * 684: goto          702
+         * 687: astore        15
+         * 689: aload_3
+         * 690: aload         15
+         * 692: invokevirtual java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+         * 695: goto          702
+         * 698: aload_2
+         * 699: invokevirtual java/net/Socket.close:()V
+         * 702: aload         14
+         * 704: athrow
+         * 705: goto          718
+         * 708: astore_2
+         * 709: aload_0
+         * 710: aload_2
+         * 711: invokespecial com/josephcagle/ipct/client/net/IPCTClient.failGracefully:(Ljava/lang/Exception;)V
+         * 714: iconst_1
+         * 715: invokestatic  java/lang/System.exit:(I)V
+         * 718: return
+         * Exception table:
+         * from    to  target type
+         * 274   280   283   Class java/lang/Exception
+         * 465   470   473   Class java/lang/Throwable
+         * 147   455   493   Class java/lang/Throwable
+         * 147   455   502   any
+         * 514   519   522   Class java/lang/Throwable
+         * 493   504   502   any
+         * 552   557   560   Class java/lang/Throwable
+         * 124   542   580   Class java/lang/Throwable
+         * 124   542   589   any
+         * 601   606   609   Class java/lang/Throwable
+         * 580   591   589   any
+         * 637   641   644   Class java/lang/Throwable
+         * 108   629   662   Class java/lang/Throwable
+         * 108   629   670   any
+         * 680   684   687   Class java/lang/Throwable
+         * 662   672   670   any
+         * 91   705   708   Class java/io/IOException
+         *  */
+        // </editor-fold>
+    }
+
+    private void failGracefully(Exception excptn) {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: getstatic     java/lang/System.err:Ljava/io/PrintStream;
+         * 3: ldc           IPCTClient: unable to connect to server. Stack trace:
+         * 5: invokevirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+         * 8: aload_1
+         * 9: invokevirtual java/lang/Exception.printStackTrace:()V
+         * 12: aconst_null
+         * 13: new           java/lang/StringBuilder
+         * 16: dup
+         * 17: invokespecial java/lang/StringBuilder."<init>":()V
+         * 20: ldc           Couldn\'t connect to the server.
+         * 22: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 25: ldc           line.separator
+         * 27: invokestatic  java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+         * 30: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 33: ldc           Next time, please make sure the server address is correct.
+         * 35: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 38: invokevirtual java/lang/StringBuilder.toString:()Ljava/lang/String;
+         * 41: invokestatic  javax/swing/JOptionPane.showMessageDialog:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 44: return
+         *  */
+        // </editor-fold>
+    }
+}

@@ -1,0 +1,340 @@
+package com.josephcagle.ipct.client.gui;
+
+import java.awt.Image;
+import java.util.Queue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+
+public class ChatFrame extends JFrame {
+
+    private static final long serialVersionUID = 1L;
+    private static final String LINE_SEPARATOR;
+    private JPanel contentPane;
+    private JTextField textField;
+    private JTextPane chatPane;
+    private Queue<String> outgoingMsgs;
+    private boolean windowClosed;
+    private final Image icon;
+
+    public static void main(String[] strings) {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: new           com/josephcagle/ipct/client/gui/ChatFrame$1
+         * 3: dup
+         * 4: invokespecial com/josephcagle/ipct/client/gui/ChatFrame$1."<init>":()V
+         * 7: invokestatic  java/awt/EventQueue.invokeLater:(Ljava/lang/Runnable;)V
+         * 10: return
+         *  */
+        // </editor-fold>
+    }
+
+    public ChatFrame() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: invokespecial javax/swing/JFrame."<init>":()V
+         * 4: aload_0
+         * 5: new           java/util/concurrent/ConcurrentLinkedQueue
+         * 8: dup
+         * 9: invokespecial java/util/concurrent/ConcurrentLinkedQueue."<init>":()V
+         * 12: putfield      com/josephcagle/ipct/client/gui/ChatFrame.outgoingMsgs:Ljava/util/Queue;
+         * 15: aload_0
+         * 16: iconst_0
+         * 17: putfield      com/josephcagle/ipct/client/gui/ChatFrame.windowClosed:Z
+         * 20: aload_0
+         * 21: new           javax/swing/ImageIcon
+         * 24: dup
+         * 25: aload_0
+         * 26: invokevirtual java/lang/Object.getClass:()Ljava/lang/Class;
+         * 29: ldc           IPCT_logo.png
+         * 31: invokevirtual java/lang/Class.getResource:(Ljava/lang/String;)Ljava/net/URL;
+         * 34: invokespecial javax/swing/ImageIcon."<init>":(Ljava/net/URL;)V
+         * 37: invokevirtual javax/swing/ImageIcon.getImage:()Ljava/awt/Image;
+         * 40: putfield      com/josephcagle/ipct/client/gui/ChatFrame.icon:Ljava/awt/Image;
+         * 43: aload_0
+         * 44: aload_0
+         * 45: getfield      com/josephcagle/ipct/client/gui/ChatFrame.icon:Ljava/awt/Image;
+         * 48: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setIconImage:(Ljava/awt/Image;)V
+         * 51: aload_0
+         * 52: ldc           The IPCT - Chat
+         * 54: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setTitle:(Ljava/lang/String;)V
+         * 57: aload_0
+         * 58: sipush        450
+         * 61: sipush        550
+         * 64: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setSize:(II)V
+         * 67: aload_0
+         * 68: aconst_null
+         * 69: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setLocationRelativeTo:(Ljava/awt/Component;)V
+         * 72: aload_0
+         * 73: iconst_1
+         * 74: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setLocationByPlatform:(Z)V
+         * 77: aload_0
+         * 78: new           javax/swing/JPanel
+         * 81: dup
+         * 82: invokespecial javax/swing/JPanel."<init>":()V
+         * 85: putfield      com/josephcagle/ipct/client/gui/ChatFrame.contentPane:Ljavax/swing/JPanel;
+         * 88: aload_0
+         * 89: getfield      com/josephcagle/ipct/client/gui/ChatFrame.contentPane:Ljavax/swing/JPanel;
+         * 92: new           javax/swing/border/EmptyBorder
+         * 95: dup
+         * 96: iconst_5
+         * 97: iconst_5
+         * 98: iconst_5
+         * 99: iconst_5
+         * 100: invokespecial javax/swing/border/EmptyBorder."<init>":(IIII)V
+         * 103: invokevirtual javax/swing/JPanel.setBorder:(Ljavax/swing/border/Border;)V
+         * 106: aload_0
+         * 107: getfield      com/josephcagle/ipct/client/gui/ChatFrame.contentPane:Ljavax/swing/JPanel;
+         * 110: new           java/awt/BorderLayout
+         * 113: dup
+         * 114: iconst_0
+         * 115: iconst_0
+         * 116: invokespecial java/awt/BorderLayout."<init>":(II)V
+         * 119: invokevirtual javax/swing/JPanel.setLayout:(Ljava/awt/LayoutManager;)V
+         * 122: aload_0
+         * 123: aload_0
+         * 124: getfield      com/josephcagle/ipct/client/gui/ChatFrame.contentPane:Ljavax/swing/JPanel;
+         * 127: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setContentPane:(Ljava/awt/Container;)V
+         * 130: new           javax/swing/JPanel
+         * 133: dup
+         * 134: invokespecial javax/swing/JPanel."<init>":()V
+         * 137: astore_1
+         * 138: aload_0
+         * 139: getfield      com/josephcagle/ipct/client/gui/ChatFrame.contentPane:Ljavax/swing/JPanel;
+         * 142: aload_1
+         * 143: ldc           Center
+         * 145: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 148: aload_1
+         * 149: new           java/awt/BorderLayout
+         * 152: dup
+         * 153: iconst_0
+         * 154: iconst_0
+         * 155: invokespecial java/awt/BorderLayout."<init>":(II)V
+         * 158: invokevirtual javax/swing/JPanel.setLayout:(Ljava/awt/LayoutManager;)V
+         * 161: new           javax/swing/JPanel
+         * 164: dup
+         * 165: invokespecial javax/swing/JPanel."<init>":()V
+         * 168: astore_2
+         * 169: aload_1
+         * 170: aload_2
+         * 171: ldc           North
+         * 173: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 176: aload_2
+         * 177: new           java/awt/BorderLayout
+         * 180: dup
+         * 181: iconst_0
+         * 182: iconst_0
+         * 183: invokespecial java/awt/BorderLayout."<init>":(II)V
+         * 186: invokevirtual javax/swing/JPanel.setLayout:(Ljava/awt/LayoutManager;)V
+         * 189: new           javax/swing/JButton
+         * 192: dup
+         * 193: ldc           Leave
+         * 195: invokespecial javax/swing/JButton."<init>":(Ljava/lang/String;)V
+         * 198: astore_3
+         * 199: aload_3
+         * 200: aload_0
+         * 201: invokedynamic #39,  0             // InvokeDynamic #0:actionPerformed:(Lcom/josephcagle/ipct/client/gui/ChatFrame;)Ljava/awt/event/ActionListener;
+         * 206: invokevirtual javax/swing/JButton.addActionListener:(Ljava/awt/event/ActionListener;)V
+         * 209: aload_2
+         * 210: aload_3
+         * 211: ldc           West
+         * 213: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 216: new           javax/swing/JButton
+         * 219: dup
+         * 220: ldc           About
+         * 222: invokespecial javax/swing/JButton."<init>":(Ljava/lang/String;)V
+         * 225: astore        4
+         * 227: aload         4
+         * 229: invokedynamic #43,  0             // InvokeDynamic #1:actionPerformed:()Ljava/awt/event/ActionListener;
+         * 234: invokevirtual javax/swing/JButton.addActionListener:(Ljava/awt/event/ActionListener;)V
+         * 237: aload_2
+         * 238: aload         4
+         * 240: ldc           East
+         * 242: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 245: new           javax/swing/JPanel
+         * 248: dup
+         * 249: invokespecial javax/swing/JPanel."<init>":()V
+         * 252: astore        5
+         * 254: aload_1
+         * 255: aload         5
+         * 257: ldc           Center
+         * 259: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 262: aload         5
+         * 264: new           java/awt/BorderLayout
+         * 267: dup
+         * 268: iconst_0
+         * 269: iconst_0
+         * 270: invokespecial java/awt/BorderLayout."<init>":(II)V
+         * 273: invokevirtual javax/swing/JPanel.setLayout:(Ljava/awt/LayoutManager;)V
+         * 276: new           javax/swing/JScrollPane
+         * 279: dup
+         * 280: invokespecial javax/swing/JScrollPane."<init>":()V
+         * 283: astore        6
+         * 285: aload         5
+         * 287: aload         6
+         * 289: ldc           Center
+         * 291: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 294: aload_0
+         * 295: new           javax/swing/JTextPane
+         * 298: dup
+         * 299: invokespecial javax/swing/JTextPane."<init>":()V
+         * 302: putfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 305: aload         6
+         * 307: aload_0
+         * 308: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 311: invokevirtual javax/swing/JScrollPane.setViewportView:(Ljava/awt/Component;)V
+         * 314: aload_0
+         * 315: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 318: iconst_0
+         * 319: invokevirtual javax/swing/JTextPane.setEditable:(Z)V
+         * 322: new           javax/swing/JPanel
+         * 325: dup
+         * 326: invokespecial javax/swing/JPanel."<init>":()V
+         * 329: astore        7
+         * 331: aload         5
+         * 333: aload         7
+         * 335: ldc           South
+         * 337: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 340: aload         7
+         * 342: new           java/awt/BorderLayout
+         * 345: dup
+         * 346: iconst_0
+         * 347: iconst_0
+         * 348: invokespecial java/awt/BorderLayout."<init>":(II)V
+         * 351: invokevirtual javax/swing/JPanel.setLayout:(Ljava/awt/LayoutManager;)V
+         * 354: aload_0
+         * 355: new           javax/swing/JTextField
+         * 358: dup
+         * 359: invokespecial javax/swing/JTextField."<init>":()V
+         * 362: putfield      com/josephcagle/ipct/client/gui/ChatFrame.textField:Ljavax/swing/JTextField;
+         * 365: aload         7
+         * 367: aload_0
+         * 368: getfield      com/josephcagle/ipct/client/gui/ChatFrame.textField:Ljavax/swing/JTextField;
+         * 371: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;)Ljava/awt/Component;
+         * 374: pop
+         * 375: aload_0
+         * 376: getfield      com/josephcagle/ipct/client/gui/ChatFrame.textField:Ljavax/swing/JTextField;
+         * 379: bipush        10
+         * 381: invokevirtual javax/swing/JTextField.setColumns:(I)V
+         * 384: new           javax/swing/JButton
+         * 387: dup
+         * 388: ldc           Send ->
+         * 390: invokespecial javax/swing/JButton."<init>":(Ljava/lang/String;)V
+         * 393: astore        8
+         * 395: aload         8
+         * 397: aload_0
+         * 398: invokedynamic #58,  0             // InvokeDynamic #2:actionPerformed:(Lcom/josephcagle/ipct/client/gui/ChatFrame;)Ljava/awt/event/ActionListener;
+         * 403: invokevirtual javax/swing/JButton.addActionListener:(Ljava/awt/event/ActionListener;)V
+         * 406: aload_0
+         * 407: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.getRootPane:()Ljavax/swing/JRootPane;
+         * 410: aload         8
+         * 412: invokevirtual javax/swing/JRootPane.setDefaultButton:(Ljavax/swing/JButton;)V
+         * 415: aload         7
+         * 417: aload         8
+         * 419: ldc           East
+         * 421: invokevirtual javax/swing/JPanel.add:(Ljava/awt/Component;Ljava/lang/Object;)V
+         * 424: aload_0
+         * 425: new           com/josephcagle/ipct/client/gui/ChatFrame$2
+         * 428: dup
+         * 429: aload_0
+         * 430: invokespecial com/josephcagle/ipct/client/gui/ChatFrame$2."<init>":(Lcom/josephcagle/ipct/client/gui/ChatFrame;)V
+         * 433: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.addWindowListener:(Ljava/awt/event/WindowListener;)V
+         * 436: return
+         *  */
+        // </editor-fold>
+    }
+
+    public void displayMessage(String string) {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 4: invokevirtual javax/swing/JTextPane.getText:()Ljava/lang/String;
+         * 7: invokevirtual java/lang/String.isEmpty:()Z
+         * 10: ifeq          24
+         * 13: aload_0
+         * 14: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 17: aload_1
+         * 18: invokevirtual javax/swing/JTextPane.setText:(Ljava/lang/String;)V
+         * 21: goto          61
+         * 24: aload_0
+         * 25: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 28: new           java/lang/StringBuilder
+         * 31: dup
+         * 32: invokespecial java/lang/StringBuilder."<init>":()V
+         * 35: aload_0
+         * 36: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 39: invokevirtual javax/swing/JTextPane.getText:()Ljava/lang/String;
+         * 42: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 45: getstatic     com/josephcagle/ipct/client/gui/ChatFrame.LINE_SEPARATOR:Ljava/lang/String;
+         * 48: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 51: aload_1
+         * 52: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 55: invokevirtual java/lang/StringBuilder.toString:()Ljava/lang/String;
+         * 58: invokevirtual javax/swing/JTextPane.setText:(Ljava/lang/String;)V
+         * 61: aload_0
+         * 62: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 65: aload_0
+         * 66: getfield      com/josephcagle/ipct/client/gui/ChatFrame.chatPane:Ljavax/swing/JTextPane;
+         * 69: invokevirtual javax/swing/JTextPane.getDocument:()Ljavax/swing/text/Document;
+         * 72: invokeinterface javax/swing/text/Document.getLength:()I
+         * 77: invokevirtual javax/swing/JTextPane.setCaretPosition:(I)V
+         * 80: return
+         *  */
+        // </editor-fold>
+    }
+
+    public boolean hasNextOutgoingMsg() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: getfield      com/josephcagle/ipct/client/gui/ChatFrame.outgoingMsgs:Ljava/util/Queue;
+         * 4: invokeinterface java/util/Queue.isEmpty:()Z
+         * 9: ifne          16
+         * 12: iconst_1
+         * 13: goto          17
+         * 16: iconst_0
+         * 17: ireturn
+         *  */
+        // </editor-fold>
+    }
+
+    public String getNextOutgoingMsg() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: getfield      com/josephcagle/ipct/client/gui/ChatFrame.outgoingMsgs:Ljava/util/Queue;
+         * 4: invokeinterface java/util/Queue.remove:()Ljava/lang/Object;
+         * 9: checkcast     java/lang/String
+         * 12: astore_1
+         * 13: aload_1
+         * 14: areturn
+         *  */
+        // </editor-fold>
+    }
+
+    public void setUsername(String string) {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: new           java/lang/StringBuilder
+         * 4: dup
+         * 5: invokespecial java/lang/StringBuilder."<init>":()V
+         * 8: ldc           The IPCT - Chat (
+         * 10: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 13: aload_1
+         * 14: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 17: ldc           )
+         * 19: invokevirtual java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+         * 22: invokevirtual java/lang/StringBuilder.toString:()Ljava/lang/String;
+         * 25: invokevirtual com/josephcagle/ipct/client/gui/ChatFrame.setTitle:(Ljava/lang/String;)V
+         * 28: return
+         *  */
+        // </editor-fold>
+    }
+
+    public boolean isClosed() {
+        // <editor-fold defaultstate="collapsed" desc="Compiled Code">
+        /* 0: aload_0
+         * 1: getfield      com/josephcagle/ipct/client/gui/ChatFrame.windowClosed:Z
+         * 4: ireturn
+         *  */
+        // </editor-fold>
+    }
+}
